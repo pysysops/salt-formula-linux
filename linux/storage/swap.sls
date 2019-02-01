@@ -35,7 +35,7 @@ linux_create_swap_file_{{ swap.device }}:
 linux_set_swap_file_{{ swap.device }}:
   cmd.wait:
   - name: 'mkswap {{ swap.device }}'
-  - watch:
+  - onchanges:
     - cmd: linux_create_swap_file_{{ swap.device }}
 
 linux_set_swap_file_status_{{ swap.device }}:
